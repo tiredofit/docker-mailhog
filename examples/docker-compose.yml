@@ -1,0 +1,25 @@
+version: '2.4'
+
+services:
+  mailhog-app:
+    image: tiredofit/mailhog:latest
+    container_name: mailhog-app
+    ports:
+      - 1025:1025
+      - 8025:8025
+    environment:
+      - CONTAINER_NAME=mailhog-app
+
+      - SMTP_LISTEN_PORT=1025
+      - UI_LISTEN_PORT=8025
+    networks:
+      services:
+        aliases:
+          - mailcatcher
+    restart: always
+networks:
+  services:
+    external:
+      name: nginx-proxy
+
+
