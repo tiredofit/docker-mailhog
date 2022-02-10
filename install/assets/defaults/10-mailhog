@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 
 API_LISTEN_IP=${API_LISTEN_IP:-"0.0.0.0"}
 API_LISTEN_PORT=${API_LISTEN_PORT:-"8025"}

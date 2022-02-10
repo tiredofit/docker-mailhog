@@ -1,7 +1,9 @@
 FROM tiredofit/alpine:3.15
 LABEL maintainer="Dave Conroy (github.com/tiredofit)"
 
-ENV CONTAINER_ENABLE_MESSAGING=FALSE
+ENV CONTAINER_ENABLE_MESSAGING=FALSE \
+    IMAGE_NAME="tiredofit/mailhog" \
+    IMAGE_REPO_URL="https://github.com/tiredofit/docker-mailhog/"
 
 RUN set -x && \
     apk update && \
