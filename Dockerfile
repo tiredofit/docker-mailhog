@@ -1,4 +1,4 @@
-FROM tiredofit/alpine:3.16
+FROM tiredofit/alpine:3.17
 LABEL maintainer="Dave Conroy (github.com/tiredofit)"
 
 ENV CONTAINER_ENABLE_MESSAGING=FALSE \
@@ -23,4 +23,4 @@ RUN set -x && \
 
 EXPOSE 1025 8025
 
-ADD install/ /
+COPY install/ /

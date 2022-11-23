@@ -11,7 +11,7 @@ liftoff
 print_start "Starting MailHog"
 print_info "To start sending mail, set your SMTP client to the containers name and port '${SMTP_LISTEN_PORT}'"
 print_info "Access the web interface via port '${UI_LISTEN_PORT}'"
-silent MailHog \
+silent exec MailHog \
     - api-bind-addr ${API_LISTEN_IP}:${API_LISTEN_PORT} \
     - hostname ${CONTAINER_NAME} \
     - smtp-bind-addr ${SMTP_LISTEN_IP}:${SMTP_LISTEN_PORT} \
