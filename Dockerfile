@@ -1,25 +1,29 @@
-FROM tiredofit/alpine:3.17
+ARG DISTRO="alpine"
+ARG DISTRO_VARIANT="3.17"
+
+FROM docker.io/tiredofit/${DISTRO}:${DISTRO_VARIANT}
 LABEL maintainer="Dave Conroy (github.com/tiredofit)"
 
 ENV CONTAINER_ENABLE_MESSAGING=FALSE \
     IMAGE_NAME="tiredofit/mailhog" \
     IMAGE_REPO_URL="https://github.com/tiredofit/docker-mailhog/"
 
-RUN set -x && \
-    apk update && \
-    apk upgrade && \
-    apk add -t .mailhog-build-deps \
+RUN source /assets/functions/00-container && \
+    set -x && \
+    package update && \
+    package upgrade && \
+    package install .mailhog-build-deps \
                git \
                go \
                && \
     \
     go install github.com/mailhog/MailHog@latest && \
     mv /root/go/bin/MailHog /usr/sbin && \
-    rm -rf /root/.cache && \
-    rm -rf /root/go && \
     \
-    apk del .mailhog-build-deps && \
-    rm -rf /var/cache/apk/*
+    package remove .mailhog-build-deps && \
+    package cleanup && \
+    rm -rf /root/.cache \
+           /root/go
 
 EXPOSE 1025 8025
 
