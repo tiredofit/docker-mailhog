@@ -1,3 +1,9 @@
+## 0.0.6 2024-05-21 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Fix extra characters in Mailhog startup script and extra spaces
+
+
 ## 0.0.5 2023-12-08 <dave at tiredofit dot ca>
 
    ### Added
